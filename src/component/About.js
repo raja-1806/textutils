@@ -32,7 +32,7 @@ const toggleStyle = ()=>{
  
   return (
     <>
-    <div className="container" style={myStyle}>
+    <div className="container my-3" style={myStyle}>
     <h2 className="my-2">About Us</h2>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
