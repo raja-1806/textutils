@@ -20,16 +20,28 @@ function Textform(props){
     const clearText=()=>(
         setText("")
     )
+    const removeSpaces = ()=>{
+        let newText = text.split(/[ ]+/)
+        setText(newText.join(" "))
+    }
+    const handleCopy = ()=>{
+        let text = document.getElementById("exampleFormControlTextarea1")
+        text.select();
+        navigator.clipboard.writeText(text.value)
+    }
+
     return(
         <>
         <div className="container">
-            <div class="mb-3 my-2">
+            <div className="mb-3 my-2">
             <h1>{props.heading}</h1>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" placeholder='enter your text here' value={text} onChange={handleOnChange}></textarea>
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" placeholder='enter your text here' value={text} onChange={handleOnChange}></textarea>
             </div>
-            <button type="button" class="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
-            <button type="button" class="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
-            <button type="button" class="btn btn-primary mx-1 my-1" onClick={clearText}>Clear text</button>
+            <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+            <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
+            <button type="button" className="btn btn-primary mx-1 my-1" onClick={clearText}>Clear text</button>
+            <button type="button" className="btn btn-primary mx-1 my-1" onClick={removeSpaces}>Remove Extra Spaces</button>
+            <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
         </div>
         <div className="container">
             <h2>text summary</h2>
