@@ -1,38 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
-const [myStyle, setMyStyle] = useState(
-  {
-  color : "black",
-  backgroundColor : "white"
-  }
-)
-
-const[btnText, setBtnText] = useState("Enable Dark Mode")
-const toggleStyle = ()=>{
-  if(myStyle.color === "black"){
-    setMyStyle(
-      {
-        color : "white",
-        backgroundColor : "black"
-        }
-        )
-        setBtnText("Enable Light Mode")
-  }else{
-    setMyStyle(
-      {
-        color : "black",
-        backgroundColor : "white"
-        }
-    )
-    setBtnText("Enable Dark Mode")
-  }
-}
+export default function About(props) {
 
  
   return (
     <>
-    <div className="container my-3" style={myStyle}>
+    <div className="container my-3" style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}>
     <h2 className="my-2">About Us</h2>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -44,7 +17,7 @@ const toggleStyle = ()=>{
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={myStyle}
+              style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}
             >
               Accordion Item #1
             </button>
@@ -55,7 +28,7 @@ const toggleStyle = ()=>{
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={myStyle}>
+            <div className="accordion-body" style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}>
               <strong>This is the first item's accordion body.</strong> It is
               shown by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees control
@@ -76,7 +49,7 @@ const toggleStyle = ()=>{
               data-bs-target="#collapseTwo"
               aria-expanded="false"
               aria-controls="collapseTwo"
-              style={myStyle}
+              style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}
             >
               Accordion Item #2
             </button>
@@ -87,7 +60,7 @@ const toggleStyle = ()=>{
             aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={myStyle}>
+            <div className="accordion-body"style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}>
               <strong>This is the second item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees control
@@ -108,7 +81,7 @@ const toggleStyle = ()=>{
               data-bs-target="#collapseThree"
               aria-expanded="false"
               aria-controls="collapseThree"
-              style={myStyle}
+              style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}
             >
               Accordion Item #3
             </button>
@@ -119,7 +92,7 @@ const toggleStyle = ()=>{
             aria-labelledby="headingThree"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={myStyle}>
+            <div className="accordion-body" style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}>
               <strong>This is the third item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
               classNamees that we use to style each element. These classNamees control
@@ -132,7 +105,7 @@ const toggleStyle = ()=>{
           </div>
         </div>
       </div>
-      <button type="button" className="btn btn-primary my-2" onClick={toggleStyle}>{btnText}</button>
+      {/* <button type="button" className="btn btn-primary my-2" onClick={toggleStyle}>{btnText}</button> */}
     </div>
     </>
   );
