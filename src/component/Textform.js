@@ -11,23 +11,28 @@ function Textform(props){
     }
     const handleUpClick = ()=>{
         let upperCase = text.toUpperCase();
-        setText(upperCase)
+        setText(upperCase);
+        props.showAlert("Converted to Uppercase", "success")
     }
     const handleLowClick=()=>{
         let lowerCase = text.toLowerCase();
         setText(lowerCase);
+        props.showAlert("Converted to Lowercase", "success")
     }
-    const clearText=()=>(
-        setText("")
-    )
+    const clearText=()=>{
+        setText("");
+        props.showAlert("Text cleared", "success")
+    }
     const removeSpaces = ()=>{
         let newText = text.split(/[ ]+/)
         setText(newText.join(" "))
+        props.showAlert("Removed extra spaces", "success")
     }
     const handleCopy = ()=>{
         let text = document.getElementById("exampleFormControlTextarea1")
         text.select();
         navigator.clipboard.writeText(text.value)
+        props.showAlert("Text copied to clipboard", "success")
     }
 
     return(
@@ -35,7 +40,7 @@ function Textform(props){
         <div className="container" style = {{color : props.mode==="light"?"black":"white"}}>
             <div className="mb-3 my-2">
             <h1>{props.heading}</h1>
-                <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" placeholder='enter your text here' value={text} onChange={handleOnChange} style={{backgroundColor : props.mode==="light"?"white":"#042723", color : props.mode ==="light"?"black":"white"}}></textarea>
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" placeholder='enter your text here' value={text} onChange={handleOnChange} style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}></textarea>
             </div>
             <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
             <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
