@@ -35,13 +35,16 @@ function Textform(props){
         document.getSelection().removeAllRanges();
         props.showAlert("Text copied to clipboard", "success")
     }
+     let myStyle = {backgroundColor : props.mode==="light"?"white":"#041209",
+     color : props.mode ==="light"?"black":"white"}
 
+     
     return(
         <>
         <div className="container" style = {{color : props.mode==="light"?"black":"white"}}>
             <div className="mb-3 my-2">
             <h1>{props.heading}</h1>
-                <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" placeholder='enter your text here' value={text} onChange={handleOnChange} style={{backgroundColor : props.mode==="light"?"white":"#041209", color : props.mode ==="light"?"black":"white"}}></textarea>
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" placeholder='enter your text here' value={text} onChange={handleOnChange} style={myStyle}></textarea>
             </div>
             <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleUpClick} disabled={text.length===0}>Convert to Uppercase</button>
             <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleLowClick} disabled={text.length===0}>Convert to Lowercase</button>
